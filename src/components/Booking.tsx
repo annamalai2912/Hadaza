@@ -7,7 +7,7 @@ import { Clock, Calendar as CalendarIcon, User, Sparkles } from 'lucide-react';
 import Modal from 'react-modal';
 import 'react-calendar/dist/Calendar.css';
 
-Modal.setAppElement('#root'); // Accessibility requirement for react-modal
+Modal.setAppElement('#root');
 
 const Booking = () => {
   const [date, setDate] = useState(new Date());
@@ -43,7 +43,7 @@ const Booking = () => {
       setShowConfetti(true);
       setModalIsOpen(false);
       setTimeout(() => setShowConfetti(false), 5000);
-    }, 3000); // Simulate API call
+    }, 3000);
   };
 
   const openModal = () => {
@@ -55,7 +55,7 @@ const Booking = () => {
   };
 
   return (
-    <section id="booking" className="py-24 bg-gradient-to-b from-white to-gray-50">
+    <section id="booking" className="py-24 bg-gradient-to-b from-white to-accent/10">
       <AnimatePresence>
         {showConfetti && <Confetti width={width} height={height} recycle={false} />}
       </AnimatePresence>
@@ -69,7 +69,7 @@ const Booking = () => {
           <h2 className="text-4xl font-serif font-bold text-primary mb-4">
             Book Your Appointment
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-primary/70 max-w-2xl mx-auto">
             Transform your look with our expert stylists. Choose your preferred service,
             date, and time.
           </p>
@@ -81,9 +81,9 @@ const Booking = () => {
             whileInView={{ opacity: 1, x: 0 }}
             className="space-y-8"
           >
-            <div className="bg-white p-6 rounded-xl shadow-lg">
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-primary/10">
               <h3 className="text-xl font-serif font-bold text-primary mb-6 flex items-center">
-                <Sparkles className="w-5 h-5 mr-2 text-secondary" />
+                <Sparkles className="w-5 h-5 mr-2 text-accent" />
                 Select Service
               </h3>
               <div className="grid gap-4">
@@ -94,17 +94,17 @@ const Booking = () => {
                     whileTap={{ scale: 0.98 }}
                     className={`p-4 rounded-lg border-2 cursor-pointer transition-colors ${
                       service === svc.id
-                        ? 'border-secondary bg-secondary/10'
-                        : 'border-gray-200 hover:border-secondary/50'
+                        ? 'border-accent bg-accent/10'
+                        : 'border-primary/20 hover:border-accent/50'
                     }`}
                     onClick={() => setService(svc.id)}
                   >
                     <div className="flex justify-between items-center">
                       <div>
                         <h4 className="font-medium text-primary">{svc.name}</h4>
-                        <p className="text-sm text-gray-600">Duration: {svc.duration}</p>
+                        <p className="text-sm text-primary/70">Duration: {svc.duration}</p>
                       </div>
-                      <p className="text-lg font-bold text-secondary">{svc.price}</p>
+                      <p className="text-lg font-bold text-accent">{svc.price}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -117,9 +117,9 @@ const Booking = () => {
             whileInView={{ opacity: 1, x: 0 }}
             className="space-y-8"
           >
-            <div className="bg-white p-6 rounded-xl shadow-lg">
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-primary/10">
               <h3 className="text-xl font-serif font-bold text-primary mb-6 flex items-center">
-                <CalendarIcon className="w-5 h-5 mr-2 text-secondary" />
+                <CalendarIcon className="w-5 h-5 mr-2 text-accent" />
                 Select Date & Time
               </h3>
               <Calendar
@@ -130,7 +130,7 @@ const Booking = () => {
               />
               <div className="mt-8">
                 <h4 className="font-medium text-primary mb-4 flex items-center">
-                  <Clock className="w-4 h-4 mr-2 text-secondary" />
+                  <Clock className="w-4 h-4 mr-2 text-accent" />
                   Available Time Slots
                 </h4>
                 <div className="grid grid-cols-3 gap-3">
@@ -141,8 +141,8 @@ const Booking = () => {
                       whileTap={{ scale: 0.95 }}
                       className={`p-2 text-sm rounded-lg transition-colors ${
                         time === slot
-                          ? 'bg-secondary text-white'
-                          : 'bg-gray-100 hover:bg-secondary/20'
+                          ? 'bg-accent text-primary'
+                          : 'bg-primary/10 hover:bg-accent/20'
                       }`}
                       onClick={() => setTime(slot)}
                     >
@@ -158,8 +158,8 @@ const Booking = () => {
               whileTap={{ scale: 0.98 }}
               className={`w-full py-4 rounded-xl font-medium transition-colors ${
                 service && time
-                  ? 'bg-primary text-white hover:bg-secondary'
-                  : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                  ? 'bg-primary text-accent hover:bg-primary/90'
+                  : 'bg-primary/20 text-primary/50 cursor-not-allowed'
               }`}
               onClick={openModal}
             >
@@ -172,18 +172,18 @@ const Booking = () => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
-        className="bg-white p-8 rounded-xl shadow-lg max-w-lg mx-auto"
+        className="bg-white p-8 rounded-xl shadow-lg max-w-lg mx-auto border border-primary/10"
         overlayClassName="fixed inset-0 bg-black/30 flex items-center justify-center"
       >
         <h3 className="text-2xl font-bold text-primary mb-4">Confirm Booking</h3>
-        <p className="text-gray-600 mb-6">
+        <p className="text-primary/70 mb-6">
           You're booking a <strong>{services.find((svc) => svc.id === service)?.name}</strong> on{' '}
           <strong>{date.toDateString()}</strong> at <strong>{time}</strong>.
         </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="w-full py-3 rounded-lg bg-primary text-white font-medium"
+          className="w-full py-3 rounded-lg bg-primary text-accent font-medium"
           onClick={handleBooking}
         >
           {loading ? 'Booking...' : 'Confirm'}

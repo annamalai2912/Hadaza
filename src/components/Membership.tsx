@@ -71,7 +71,7 @@ const Membership = () => {
   ];
 
   return (
-    <section id="membership" className="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section id="membership" className="py-24 bg-gradient-to-b from-accent/10 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -81,7 +81,7 @@ const Membership = () => {
           <h2 className="text-4xl font-serif font-bold text-primary mb-4">
             Elite Membership Program
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-primary/70 max-w-2xl mx-auto">
             Join our exclusive membership program and enjoy premium benefits
           </p>
         </motion.div>
@@ -93,15 +93,15 @@ const Membership = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="text-center p-8 bg-white rounded-xl shadow-lg"
+              className="text-center p-8 bg-white rounded-xl shadow-lg border border-primary/10"
             >
-              <div className="w-16 h-16 mx-auto mb-6 bg-secondary/20 rounded-full flex items-center justify-center">
-                <benefit.icon className="w-8 h-8 text-secondary" />
+              <div className="w-16 h-16 mx-auto mb-6 bg-accent/20 rounded-full flex items-center justify-center">
+                <benefit.icon className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-serif font-bold text-primary mb-2">
                 {benefit.title}
               </h3>
-              <p className="text-gray-600">{benefit.description}</p>
+              <p className="text-primary/70">{benefit.description}</p>
             </motion.div>
           ))}
         </div>
@@ -114,10 +114,10 @@ const Membership = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
               whileHover={{ scale: 1.02 }}
-              className="bg-white p-8 rounded-xl shadow-lg relative overflow-hidden"
+              className="bg-white p-8 rounded-xl shadow-lg relative overflow-hidden border border-primary/10"
             >
               {tier.name === 'Gold' && (
-                <div className="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-sm">
+                <div className="absolute top-4 right-4 bg-accent text-primary px-3 py-1 rounded-full text-sm">
                   Popular
                 </div>
               )}
@@ -128,11 +128,11 @@ const Membership = () => {
                 {tier.name}
               </h3>
               <div className="flex items-baseline mb-6">
-                <span className="text-3xl font-bold text-secondary">₹</span>
-                <span className="text-4xl font-bold text-secondary">
+                <span className="text-3xl font-bold text-primary">₹</span>
+                <span className="text-4xl font-bold text-primary">
                   {inView && <CountUp end={parseInt(tier.price.replace(',', ''))} duration={2} separator="," />}
                 </span>
-                <span className="text-gray-600 ml-2">/{tier.duration}</span>
+                <span className="text-primary/70 ml-2">/{tier.duration}</span>
               </div>
               <ul className="space-y-4 mb-8">
                 {tier.features.map((feature, i) => (
@@ -141,9 +141,9 @@ const Membership = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex items-center text-gray-600"
+                    className="flex items-center text-primary/80"
                   >
-                    <Star className="w-4 h-4 text-secondary mr-2" />
+                    <Star className="w-4 h-4 text-accent mr-2" />
                     {feature}
                   </motion.li>
                 ))}
@@ -151,7 +151,7 @@ const Membership = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors duration-300"
+                className="w-full bg-primary text-accent py-3 rounded-lg hover:bg-primary/90 transition-colors duration-300"
               >
                 Choose {tier.name}
               </motion.button>

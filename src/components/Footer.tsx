@@ -22,7 +22,17 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="col-span-1 md:col-span-2">
-            <h2 className="text-2xl font-serif font-bold mb-4">Hadaza</h2>
+            <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          className="flex-shrink-0 cursor-pointer"
+                          
+                        >
+                          <img
+                            src="website-logo.png"  // Replace with your actual logo path
+                            alt="Hadaza Logo"
+                            className={`h-22`}
+                          />
+                        </motion.div>
             <p className="text-white/80 mb-6 max-w-md">
               Bringing out your inner showstopper with our premium grooming services.
               Experience luxury and transform your look with our expert stylists.

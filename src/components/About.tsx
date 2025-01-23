@@ -37,7 +37,7 @@ const About = () => {
           <motion.h3 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold text-gray-800 mb-4"
+            className="text-2xl font-bold text-primary mb-4"
           >
             The Hadaza Legacy
           </motion.h3>
@@ -45,7 +45,7 @@ const About = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-600"
+            className="text-primary/80"
           >
             Inspired by Queen Esther's transformative journey, we craft beauty that transcends 
             physical appearance. Our studio represents the art of revealing inner confidence 
@@ -63,7 +63,7 @@ const About = () => {
           <motion.h3 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold text-gray-800 mb-4"
+            className="text-2xl font-bold text-primary mb-4"
           >
             Empowering Transformation
           </motion.h3>
@@ -71,7 +71,7 @@ const About = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-600"
+            className="text-primary/80"
           >
             We don't just style - we empower. Our mission is to create a holistic beauty 
             experience that nurtures self-love, confidence, and personal expression through 
@@ -128,7 +128,7 @@ const About = () => {
   return (
     <motion.section 
       ref={containerRef}
-      className="min-h-screen relative overflow-hidden py-24"
+      className="min-h-screen relative overflow-hidden py-24 bg-accent/10"
     >
       <motion.div 
         style={{ translateY, rotateX, scale }}
@@ -146,8 +146,8 @@ const About = () => {
                   flex items-center space-x-2 px-4 py-2 rounded-full 
                   transition-all duration-300 
                   ${activeSection === item.id 
-                    ? 'bg-gray-200 text-gray-800' 
-                    : 'bg-white text-gray-700 hover:bg-gray-100'}
+                    ? 'bg-primary/20 text-primary' 
+                    : 'bg-white text-primary/70 hover:bg-primary/10'}
                 `}
               >
                 <item.icon className="w-5 h-5" />
@@ -162,7 +162,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="bg-white p-8 rounded-2xl shadow-xl"
+              className="bg-white p-8 rounded-2xl shadow-xl border border-primary/10"
             >
               {navItems.find(item => item.id === activeSection)?.content}
             </motion.div>
@@ -175,13 +175,13 @@ const About = () => {
                 whileHover={{ scale: 1.05 }}
                 onHoverStart={() => setHoveredStat(index)}
                 onHoverEnd={() => setHoveredStat(null)}
-                className="relative bg-white p-4 rounded-xl text-center overflow-hidden shadow-md"
+                className="relative bg-white p-4 rounded-xl text-center overflow-hidden shadow-md border border-primary/10"
               >
-                <div className="w-12 h-12 mx-auto mb-2 bg-gray-100 rounded-full flex items-center justify-center">
-                  <stat.icon className="w-6 h-6 text-gray-700" />
+                <div className="w-12 h-12 mx-auto mb-2 bg-accent/10 rounded-full flex items-center justify-center">
+                  <stat.icon className="w-6 h-6 text-primary" />
                 </div>
-                <div className="font-bold text-2xl text-gray-800">{stat.value}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
+                <div className="font-bold text-2xl text-primary">{stat.value}</div>
+                <div className="text-sm text-primary/70">{stat.label}</div>
                 
                 <AnimatePresence>
                   {hoveredStat === index && (
@@ -189,7 +189,7 @@ const About = () => {
                       initial={{ y: '100%' }}
                       animate={{ y: 0 }}
                       exit={{ y: '100%' }}
-                      className="absolute inset-0 bg-gray-800 text-white p-3 flex flex-col justify-center"
+                      className="absolute inset-0 bg-primary text-accent p-3 flex flex-col justify-center"
                     >
                       {stat.details.map((detail, idx) => (
                         <motion.div
@@ -217,7 +217,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="relative group"
         >
-          <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
+          <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-105 transition-transform duration-500 border-4 border-primary/20">
             <motion.img 
               whileHover={{ scale: 1.1 }}
               src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80" 
@@ -230,14 +230,14 @@ const About = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="absolute -bottom-10 -right-10 bg-white p-6 rounded-2xl shadow-xl max-w-xs"
+            className="absolute -bottom-10 -right-10 bg-white p-6 rounded-2xl shadow-xl max-w-xs border border-primary/10"
           >
-            <blockquote className="italic text-gray-800 text-lg mb-2">
+            <blockquote className="italic text-primary text-lg mb-2">
               "Beauty is an expression of inner strength"
             </blockquote>
             <div className="flex items-center">
-              <Flower className="w-6 h-6 text-gray-700 mr-2" />
-              <p className="text-sm text-gray-600">Sarah Johnson, Founder</p>
+              <Flower className="w-6 h-6 text-accent mr-2" />
+              <p className="text-sm text-primary/70">Sarah Johnson, Founder</p>
             </div>
           </motion.div>
         </motion.div>
